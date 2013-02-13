@@ -17,13 +17,10 @@
 #define SDL_EXT_H
 
 #include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
 
 #ifdef _WIN32
     #undef main
     #pragma comment(lib, "SDL.lib")
-    //#pragma comment(lib, "SDLmain.lib")
-    #pragma comment(lib, "SDL_ttf.lib")
 #endif
 
 #include "utilities/CTimer.h"
