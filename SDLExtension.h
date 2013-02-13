@@ -29,5 +29,6 @@
 #include "containers/rect2.h"
 #include "SDLTypes.h"
 #include "SDLWindow.h"
+#include "SDLBitmap.h"
 
 #endif

@@ -30,6 +30,9 @@
     <ClInclude Include="..\..\SDLWindow.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\SDLBitmap.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\test.cpp">

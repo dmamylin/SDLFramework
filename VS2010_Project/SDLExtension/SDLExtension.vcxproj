@@ -60,6 +60,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\SDLBitmap.h" />
     <ClInclude Include="..\..\SDLExtension.h" />
     <ClInclude Include="..\..\SDLInput.h" />
     <ClInclude Include="..\..\SDLRenderer.h" />
