@@ -51,7 +51,7 @@ void SDLWindow::Initialize(const rect2<u16>& resolution, const bool full, const 
 {
     u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF | (full ? SDL_FULLSCREEN : 0);
 
-    if ( SDL_Init(SDL_INIT_VIDEO) < 0 ||
+    if ( SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 ||
          !SDL_VideoModeOK((s32)resolution.width, (s32)resolution.height, 32, flags) )
     {
         puts("Unable to init SDL");
