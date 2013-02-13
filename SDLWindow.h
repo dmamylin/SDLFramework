@@ -43,11 +43,16 @@ class SDLWindow
         bool IsMouseDown(u8) const;
         bool IsMouseUp(u8)   const;
         bool IsMousePressed(u8);
+        void SetMousePosition(const point2<u16>& newPos) { SDL_WarpMouse(newPos.x, newPos.y); }
+        point2<s32> GetMousePosition(void);
 };
 
 void SDLWindow::Initialize(const rect2<u16>& resolution, const bool full, const char* caption)
 {
-    if ( SDL_Init(SDL_INIT_VIDEO) < 0 )
+    u32 flags = SDL_HWSURFACE | SDL_DOUBLEBUF | (full ? SDL_FULLSCREEN : 0);
+
+    if ( SDL_Init(SDL_INIT_VIDEO) < 0 ||
+         !SDL_VideoModeOK((s32)resolution.width, (s32)resolution.height, 32, flags) )
     {
         puts("Unable to init SDL");
         exit(1);
@@ -55,8 +60,7 @@ void SDLWindow::Initialize(const rect2<u16>& resolution, const bool full, const 
 
     SDL_WM_SetCaption(caption, NULL);
 
-    display = SDL_SetVideoMode(resolution.width, resolution.height, 32, 
-                                SDL_HWSURFACE | SDL_DOUBLEBUF | (full ? SDL_FULLSCREEN : 0));
+    display = SDL_SetVideoMode(resolution.width, resolution.height, 32, flags);
 
     if ( !display )
     {
@@ -140,6 +144,16 @@ inline bool SDLWindow::IsMousePressed(u8 button)
         inputManager.mouseState[button - 1] = INPUT_DOWN;
 
     return result;
+}
+
+point2<s32> SDLWindow::GetMousePosition(void)
+{
+    s32 x, y;
+
+    x = y = 0;
+    SDL_GetMouseState(&x, &y);
+
+    return point2<s32>(x, y);
 }
 
 #endif

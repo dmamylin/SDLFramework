@@ -8,7 +8,7 @@ int main(void)
     window.Initialize(800, 600, false, "Test window");    
     img.SetBitmap("test.bmp");
     img.SetColorKey(0xFFFFFF);
-
+    
     while( window.Run() )
     {
         window.BeginScene(0x0);
