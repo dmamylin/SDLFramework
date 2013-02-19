@@ -16,19 +16,26 @@
 #ifndef SDL_EXT_H
 #define SDL_EXT_H
 
-#ifdef _WIN32
-    #undef main
+#ifdef _WIN32    
     #pragma comment(lib, "SDL.lib")
     
     #include <SDL/SDL.h>
     #include "utilities/CTimer.h"
+    
+    #undef main
 #endif
 
-#include "math/points/point2.h"
+#ifdef _INCLUDE_MATH
+	#include "math/math.h"
+#else
+	#include "math/points/point2.h"
+#endif
+
 #include "containers/color3.h"
 #include "containers/rect2.h"
 #include "SDLTypes.h"
 #include "SDLWindow.h"
 #include "SDLBitmap.h"
+#include "SDLRenderer.h"
 
 #endif

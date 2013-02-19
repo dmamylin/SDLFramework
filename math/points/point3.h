@@ -41,12 +41,6 @@ class point3
 		{
 			return !( (*this) == p );
 		}
-		
-		template <class F>
-		inline float DistanceTo(const point3<F>& p)
-		{ 
-			return sqrt( float((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y) + (p.z - z) * (p.z - z)) ); 
-		}
 };
 
 #endif

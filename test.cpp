@@ -17,6 +17,6 @@ int main(void)
     }
 
     window.Release();
-
+    
     return 0;
 }

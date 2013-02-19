@@ -43,12 +43,6 @@ class point2
         {
             return point2<T>(p1.x + p2.x, p1.y + p2.y);
         }
-		
-		template <class F>
-		inline float DistanceTo(const point2<F>& p)
-		{ 
-			return sqrt( float((p.x - x) * (p.x - x) + (p.y - y) * (p.y - y)) ); 
-		}
 };
 
 #endif
