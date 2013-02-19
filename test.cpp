@@ -1,3 +1,4 @@
+#define _INCLUDE_MATH
 #include "SDLExtension.h"
 
 int main(void)

@@ -1,8 +1,6 @@
 #ifndef VECTOR3_H
 #define VECTOR3_H
 
-#include <math.h>
-
 class mat3;
 class vec2;
 class vec4;
@@ -36,9 +34,12 @@ class vec3
 		friend vec3 operator / (const vec3&, const float);
 		friend vec3 operator / (const float, const vec3&);
 		
+        inline float& operator [] (int ind) { return *(&x + ind); }
+        inline float operator [] (int ind) const { return *(&x + ind); }
 		void operator = (const vec3&);
 		void operator /= (const float);
 		void operator *= (const float);
+        void operator *= (const mat3&);
 		void operator += (const float);
 		void operator -= (const float);
 		void operator += (const vec3&);

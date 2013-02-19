@@ -1,8 +1,6 @@
 #ifndef VECTOR4_H
 #define VECTOR4_H
 
-#include <math.h>
-
 class mat4;
 class vec3;
 
@@ -35,12 +33,15 @@ class vec4
 		friend vec4 operator / (const float, const vec4&);
 		friend vec4 operator / (const vec4&, const float);
 
+        inline float& operator [] (int ind) { return *(&x + ind); }
+        inline float operator [] (int ind) const { return *(&x + ind); }
 		void operator = (const vec4&);
 		void operator /= (const float);
 		void operator *= (const float);
+        void operator *= (const mat4&);
 		void operator += (const float);
-		void operator -= (const float);
-		void operator += (const vec4&);
+        void operator += (const vec4&);
+		void operator -= (const float);		
 		void operator -= (const vec4&);		
 	
 		inline float Length(void) { return sqrt(x*x + y*y + z*z + w*w); }

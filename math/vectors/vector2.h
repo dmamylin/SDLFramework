@@ -1,8 +1,6 @@
 #ifndef VECTOR2_H
 #define VECTOR2_H
 
-#include <math.h>
-
 class vec3;
 class vec4;
 
@@ -33,6 +31,8 @@ class vec2
 		friend vec2 operator / (const vec2&, const float);
 		friend vec2 operator / (const float, const vec2&);
 
+        inline float& operator [] (int ind) { return *(&x + ind); }
+        inline float operator [] (int ind) const { return *(&x + ind); }
         void operator = (const vec2&);
 		void operator /= (const float);
 		void operator *= (const float);

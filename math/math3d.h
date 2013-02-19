@@ -1,6 +1,10 @@
 #ifndef MATH_3D_H
 #define MATH_3D_H
 
+#define PI		3.141592653589793f
+
+#include <math.h>
+
 #include "matrices/matrix3.h"
 #include "matrices/matrix4.h"
 #include "vectors/vector2.h"
@@ -8,8 +12,6 @@
 #include "vectors/vector4.h"
 #include "points/point2.h"
 #include "points/point3.h"
-
-#define PI		3.141592653589793f
 
 //////////////////
 //COMMON
@@ -83,6 +85,11 @@ vec3::vec3(const vec4& v)
 	z = v.z;
 }
 
+inline void vec3::operator *= (const mat3& m)
+{
+    *this = *this * m;
+}
+
 //////////////////
 //VECTOR_4
 /////////////////
@@ -115,6 +122,11 @@ inline vec4 operator * (const vec4& v, const mat4& m)
 inline vec4 operator * (const mat4& m, const vec4& v)
 {
 	return v * m;
+}
+
+inline void vec4::operator *= (const mat4& m)
+{
+    *this = *this * m;
 }
 
 //////////////////

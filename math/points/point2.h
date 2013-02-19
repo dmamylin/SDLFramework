@@ -38,11 +38,6 @@ class point2
 		{
 			return !( (*this) == p );
 		}
-
-        friend inline point2<T> operator + (const point2<T>& p1, const point2<T>& p2)
-        {
-            return point2<T>(p1.x + p2.x, p1.y + p2.y);
-        }
 };
 
 #endif

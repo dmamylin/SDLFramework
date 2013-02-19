@@ -26,7 +26,7 @@
 #endif
 
 #ifdef _INCLUDE_MATH
-	#include "math/math.h"
+	#include "math/math3d.h"
 #else
 	#include "math/points/point2.h"
 #endif
