@@ -63,8 +63,8 @@ inline bool SDLRenderer::ValidateXY(const f32 x, const f32 y)
 
 inline point2<s32> SDLRenderer::LogicalToScreen(const point2<f32>& coord)
 {
-    return point2<s32>( s32(halfWidth * (coord.x + 1.0f)), s32(halfHeight * (coord.y + 1.0f)) );
-    //return point2<s32>( s32(halfWidth + halfWidth * coord.x), s32(halfHeight - halfHeight * coord.y) );
+    //return point2<s32>( s32(halfWidth * (coord.x + 1.0f)), s32(halfHeight * (coord.y + 1.0f)) );
+    return point2<s32>( s32(halfWidth + halfWidth * coord.x), s32(halfHeight - halfHeight * coord.y) );
 }
 
 inline point2<s32> SDLRenderer::LogicalToScreen(const f32 x, const f32 y)
@@ -74,8 +74,8 @@ inline point2<s32> SDLRenderer::LogicalToScreen(const f32 x, const f32 y)
 
 inline point2<f32> SDLRenderer::ScreenToLogical(const point2<s32>& coord)
 {
-    return point2<f32>( (coord.x / halfWidth - 1.0f), (coord.y / halfHeight - 1.0f) );
-    //return point2<f32>( (coord.x - halfWidth) / halfWidth, (halfHeight - coord.y) / halfHeight );
+    //return point2<f32>( (coord.x / halfWidth - 1.0f), (coord.y / halfHeight - 1.0f) );
+    return point2<f32>( (coord.x - halfWidth) / halfWidth, (halfHeight - coord.y) / halfHeight );
 }
 
 inline point2<f32> SDLRenderer::ScreenToLogical(const s32 x, const s32 y)
