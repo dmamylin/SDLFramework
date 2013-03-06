@@ -41,8 +41,8 @@ public:
     //Draw line by coordinates
     void DrawLine2d(const point2<s32>&, const point2<s32>&, const u32);
     void DrawLine2d(const point2<s32>&, const point2<s32>&, const color3<u8>&);
-    void DrawLine2d(const point2<f32>&, const point2<s32>&, const u32);
-    void DrawLine2d(const point2<f32>&, const point2<s32>&, const color3<u8>&);
+    void DrawLine2d(const point2<f32>&, const point2<f32>&, const u32);
+    void DrawLine2d(const point2<f32>&, const point2<f32>&, const color3<u8>&);
 
     void SetWindow(SDLWindow* wnd) { window = wnd; if ( wnd ) Update(); }
 
@@ -63,7 +63,8 @@ inline bool SDLRenderer::ValidateXY(const f32 x, const f32 y)
 
 inline point2<s32> SDLRenderer::LogicalToScreen(const point2<f32>& coord)
 {
-    return point2<s32>( s32(halfWidth + halfWidth * coord.x), s32(halfHeight - halfHeight * coord.y) );
+    return point2<s32>( s32(halfWidth * (coord.x + 1.0f)), s32(halfHeight * (coord.y + 1.0f)) );
+    //return point2<s32>( s32(halfWidth + halfWidth * coord.x), s32(halfHeight - halfHeight * coord.y) );
 }
 
 inline point2<s32> SDLRenderer::LogicalToScreen(const f32 x, const f32 y)
@@ -73,7 +74,8 @@ inline point2<s32> SDLRenderer::LogicalToScreen(const f32 x, const f32 y)
 
 inline point2<f32> SDLRenderer::ScreenToLogical(const point2<s32>& coord)
 {
-    return point2<f32>( (coord.x - halfWidth) / halfWidth, (halfHeight - coord.y) / halfHeight );
+    return point2<f32>( (coord.x / halfWidth - 1.0f), (coord.y / halfHeight - 1.0f) );
+    //return point2<f32>( (coord.x - halfWidth) / halfWidth, (halfHeight - coord.y) / halfHeight );
 }
 
 inline point2<f32> SDLRenderer::ScreenToLogical(const s32 x, const s32 y)
@@ -184,12 +186,12 @@ inline void SDLRenderer::DrawLine2d(const point2<s32>& from, const point2<s32>& 
     DrawLine2d( from, to, SDL_MapRGB(window->display->format, color.r, color.g, color.b) );
 }
 
-inline void SDLRenderer::DrawLine2d(const point2<f32>& from, const point2<s32>& to, const u32 color)
+inline void SDLRenderer::DrawLine2d(const point2<f32>& from, const point2<f32>& to, const u32 color)
 {
     DrawLine2d( LogicalToScreen(from), LogicalToScreen(to), color );
 }
 
-inline void SDLRenderer::DrawLine2d(const point2<f32>& from, const point2<s32>& to, const color3<u8>& color)
+inline void SDLRenderer::DrawLine2d(const point2<f32>& from, const point2<f32>& to, const color3<u8>& color)
 {
     DrawLine2d( LogicalToScreen(from), LogicalToScreen(to), color );
 }
